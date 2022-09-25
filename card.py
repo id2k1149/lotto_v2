@@ -49,3 +49,17 @@ class Card:
 if __name__ == '__main__':
     card = Card()
     print(card)
+    print(card.numbers)
+    for each in card.numbers:
+        index = card.numbers.index(each)
+        column_index = 8 if int(each) == 90 else int(each) // 10
+        if index < 5:
+            row = 0
+            card.numbers_on_card[row][column_index] = '**'
+        elif 4 < index < 10:
+            row = 1
+            card.numbers_on_card[row][column_index] = '**'
+        elif index > 9:
+            row = 2
+            card.numbers_on_card[row][column_index] = '**'
+    print(card)
