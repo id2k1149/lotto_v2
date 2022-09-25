@@ -13,7 +13,8 @@ def get_random_numbers():
                 column_index = 8 if int(number) == 90 else int(number) // 10
                 if numbers_on_card[i][column_index] == '__':
                     if i == 2:
-                        if (numbers_on_card[i - 1][column_index] != '__') and (numbers_on_card[i - 2][column_index] != '__'):
+                        if (numbers_on_card[i - 1][column_index] != '__') and (
+                                numbers_on_card[i - 2][column_index] != '__'):
                             continue
                     random_numbers.append(number)
                     if number < 10:
@@ -31,13 +32,20 @@ def get_random_numbers():
 class Card:
     def __init__(self):
         random_numbers, numbers_on_card = get_random_numbers()
-        # print(random_numbers)
-        # for i in range(3):
-        #     print(numbers_on_card[i])
         self.numbers = random_numbers
         self.numbers_on_card = numbers_on_card
+
+    def __str__(self):
+        result = f"""
+-----card numbers-------
+{self.numbers_on_card[0]}
+{self.numbers_on_card[1]}
+{self.numbers_on_card[2]}
+------------------------
+                """
+        return result
 
 
 if __name__ == '__main__':
     card = Card()
-    print(card.numbers_on_card)
+    print(card)
