@@ -1,40 +1,15 @@
-import random
-
-
-def get_random_numbers():
-    rows, cols = (3, 9)
-    random_numbers = []
-    numbers_on_card = [['  ' for _ in range(cols)] for _ in range(rows)]
-    for i in range(rows):
-        counter = 0
-        while counter < 5:
-            number = random.randint(1, 90)
-            if number not in random_numbers:
-                cols_index = 8 if int(number) == 90 else int(number) // 10
-                if numbers_on_card[i][cols_index] == '  ':
-                    if i == 2:
-                        if (numbers_on_card[i - 1][cols_index] != '  ') and (
-                                numbers_on_card[i - 2][cols_index] != '  '):
-                            continue
-                    random_numbers.append(number)
-                    if number < 10:
-                        number_on_card = ' ' + str(number)
-                    else:
-                        number_on_card = str(number)
-                    numbers_on_card[i][cols_index] = number_on_card
-                    counter += 1
-            else:
-                continue
-
-    return random_numbers, numbers_on_card
+from numbers_generator import NumbersGenerator
 
 
 class Card:
 
     def __init__(self):
-        random_numbers, numbers_on_card = get_random_numbers()
-        self.numbers = random_numbers
-        self.numbers_on_card = numbers_on_card
+        total_numbers = 90
+        rows = 3
+        cols = 9
+        generator = NumbersGenerator(total_numbers, rows, cols)
+        self.numbers = generator.random_numbers
+        self.numbers_on_card = generator.numbers_on_card
 
     def __str__(self):
         result = f"""
