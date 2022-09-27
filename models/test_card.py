@@ -1,4 +1,4 @@
-from card import Card
+from models.card import Card
 
 
 class TestCard:
@@ -10,6 +10,7 @@ class TestCard:
 
     def test_is_empty(self):
         assert not self.card.is_empty()
+
         for each in self.card.numbers:
             self.card.cross_out(each)
         assert self.card.is_empty()

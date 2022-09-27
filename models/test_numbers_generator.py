@@ -1,4 +1,4 @@
-from numbers_generator import NumbersGenerator
+from models.numbers_generator import NumbersGenerator
 
 
 class TestNumbersGenerator:

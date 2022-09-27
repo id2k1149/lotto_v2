@@ -1,4 +1,4 @@
-from bag import Bag, EmptyBagError
+from models.bag import Bag, EmptyBagError
 from pytest import raises
 
 
